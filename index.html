@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Rock Paper Scissors</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/modern-normalize.css">
+    <link rel="stylesheet" href="./css/variables.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <img class="logo" src="./images/logo.svg" alt="img">
+            <div class="score">
+                <p class="score__title">score</p>
+                <p class="score__number">0</p>
+            </div>
+        </header>
+        <section class="game">
+            <button class="choice-btn" data-choice="rock">
+                <div class="choice rock">
+                    <img src="./images/icon-rock.svg" alt="img">
+                </div>
+            </button>
+            <button class="choice-btn" data-choice="paper">
+                <div class="choice paper">
+                    <img src="./images/icon-paper.svg" alt="img">
+                </div>
+            </button>
+            <button class="choice-btn" data-choice="scissors" data-name="Kiril">
+                <div class="choice scissors">
+                    <img src="./images/icon-scissors.svg" alt="img">
+                </div>
+            </button>
+        </section>
+    </div>
+    <section class="results hidden">
+        <h2 class="results__hidding">Вы выиграли фигу!</h2>
+        <h2 class="results__hidding">Вы продули!</h2>
+    </section>
+    <script src="./js/index.js" type="module"></script>
+</body>
+</html>

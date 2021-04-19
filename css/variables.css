@@ -1,0 +1,7 @@
+:root {
+    --text_color: rgb(98, 122, 228);
+    --number_color: rgb(209, 177, 73);
+    --score_text: white;
+    --bg_color: blue;
+    --font-family: 'Original Surfer', cursive;
+}
