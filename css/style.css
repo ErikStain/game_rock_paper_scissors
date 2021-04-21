@@ -1,6 +1,6 @@
 body {
     font-family: var(--font-family);
-    background: radial-gradient( rgb(64, 0, 182), rgb(14, 14, 29));
+    background: radial-gradient(var(--bg-grad-1), var(--bg-grad-2));
     min-height: 100vh;
     color: var(--text_color);
     text-transform: uppercase;
@@ -17,10 +17,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid white;
+    border: 2px solid var(--outline);
     border-radius: 20px;
     padding: 1rem 1.5rem 1rem 2rem;
-    height: 200px;   
+    height: 200px;
 }
 
 .logo img {
@@ -32,13 +32,15 @@ body {
     flex-flow: column;
     justify-content: center;
     align-items: center;
+    background: rgb(23, 22, 135);
+    padding: 20px;
+    border-radius: 40%;
 }
 
 .score__title {
     font-size: 1.5rem;
     letter-spacing: 0.1em;
     color: var(--text_color);
-
 }
 
 .score__number {
@@ -52,7 +54,7 @@ body {
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas: "rock paper" "scissors scissors";
     place-items: center;
-    height: 40rem;
+    height: 30rem;
     padding-top: 4rem;
     position: relative;
 }
@@ -83,15 +85,16 @@ body {
     background: forestgreen;
     display: grid;
     place-items: center;
-    box-shadow: inset 0 0.7rem gray;
+    box-shadow: inset 0 0.7rem var(--shadow-light);
+    border-radius: 50%;
 }
 
 .choice::before,
 .choice::after {
     position: absolute;
     content: "";
-    width: 150%;
-    height: 150%;
+    width: 130%;
+    height: 130%;
     border-radius: 50%;
     z-index: -1;
     top: -15%;
@@ -105,27 +108,27 @@ body {
 
 .choice-btn:focus .choice::after {
     opacity: 1;
-    box-shadow: 0 0 0 2rem pink;
+    box-shadow: 0 0 0 2rem rgb(152, 122, 185);
     z-index: -2;
 }
 
 .choice img {
-    transform: scale(0.5);
+    transform: scale(1.25);
 }
 
 .choice.rock::before {
-    background: linear-gradient(to bottom, pink red);
-    box-shadow: 0 0.5rem violet, 0 0.5rem firebrick;
+    background: linear-gradient(to bottom, var(--rock-1), var(--rock-2));
+    box-shadow: 0 0.5rem var(--shadow-med), 0 0.5rem var(--rock-2);
 }
 
 .choice.paper::before {
-    background: linear-gradient(to bottom, pink red);
-    box-shadow: 0 0.5rem violet, 0 0.5rem firebrick;
+    background: linear-gradient(to bottom, var(--paper-1), var(--paper-2));
+    box-shadow: 0 0.5rem var(--shadow-med), 0 0.5rem var(--paper-2);
 }
 
 .choice.scissors::before {
-    background: linear-gradient(to bottom, pink red);
-    box-shadow: 0 0.5rem violet, 0 0.5rem firebrick;
+    background: linear-gradient(to bottom, var(--scissors-1), var(--scissors-2));
+    box-shadow: 0 0.5rem var(--shadow-med), 0 0.5rem var(--scissors-2);
 }
 
 .choice-btn[data-choice="rock"] {
@@ -139,3 +142,94 @@ body {
 .choice-btn[data-choice="scissors"] {
     grid-area: scissors;
 }
+
+.results {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    place-items: center;
+    grid-template-areas: "you-title ai-title" "you-picked ai-picked";
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.results__heading {
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    padding: 4rem 0 8rem;
+}
+
+.results__result {
+    min-height: 10rem;
+    min-width: 10rem;
+    background: rgb(24, 25, 48);
+    border-radius: 50%;
+    transform: scale(1.4);
+    z-index: -1;
+}
+
+.results__heading:first-of-type {
+    grid-area: you-title;
+}
+
+.results__heading:last-of-type {
+    grid-area: ai-title;
+}
+
+.results__result:first-of-type {
+    grid-area: you-picked;
+}
+
+.results__result:last-of-type {
+    grid-area: ai-picked;
+} 
+
+
+ /* Класс который будем добавлять джава скриптом */
+.winner {
+    box-shadow: 0 0 0 40px var(--winner-back1), 0 0 0 80px var(--winner-back2), 0 0 0 130px var(--winner-back3);
+    animation: winner 1s ease forwards;
+}
+
+@keyframes winner {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.results.show-winner {
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: "you-title ai-title" "you-picked result-winner ai-picked";
+}
+
+.results__winner {
+    grid-area: result-winner;
+    display: grid;
+    place-items: center;
+}
+
+.results__text {
+    font-size: 3rem;
+    padding-bottom: 1.5rem;
+}
+
+.play-again {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    font-family: inherit;
+    letter-spacing: 0.1em;
+    color: var(--dark-text);
+    background: whitesmoke;
+    outline: none;
+    border: none;
+    border-radius: 45%;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.play-again:focus {
+    border: 5px solid var(--outline);
+}
+

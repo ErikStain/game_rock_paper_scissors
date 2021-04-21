@@ -39,9 +39,32 @@
         </section>
     </div>
     <section class="results hidden">
-        <h2 class="results__hidding">Вы выиграли фигу!</h2>
-        <h2 class="results__hidding">Вы продули!</h2>
+        <h2 class="results__heading">Вы выиграли фигу!</h2>
+        <h2 class="results__heading">Вы продули!</h2>
+        <div class="results__result"></div>
+        <div class="results__winner hidden">
+            <h3 class="results__text"></h3>
+            <button class="play-again">Play again</button>
+        </div>
+        <div class="results__result"></div>
     </section>
+
+    <button class="rules-btn" tabindex="1">Rules</button>
+    <div class="modal">
+        <div class="modal__container">
+            <header class="modal__header">
+                <h2 class="modal__heading">Rules</h2>
+                <button class="close-btn"><img src="./images/icon-close.svg" alt="img"></button>
+            </header>
+            <img src="./images/image-rules.svg" alt="img">
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="attribution">
+            Created by <a href="#" target="_blank">FrontEnd Developer Kiril</a>
+            from <a href="#">CS tecnology</a>
+        </div>
+    </footer>
     <script src="./js/index.js" type="module"></script>
 </body>
 </html>
