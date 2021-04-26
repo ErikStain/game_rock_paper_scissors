@@ -1,3 +1,7 @@
+.hidden {
+    display: none;
+}
+
 body {
     font-family: var(--font-family);
     background: radial-gradient(var(--bg-grad-1), var(--bg-grad-2));
@@ -50,13 +54,13 @@ body {
 }
 
 .game {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas: "rock paper" "scissors scissors";
     place-items: center;
     height: 30rem;
     padding-top: 4rem;
-    position: relative;
 }
 
 .game::before {
@@ -233,3 +237,55 @@ body {
     border: 5px solid var(--outline);
 }
 
+/* Modal window */
+.modal {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    background: rgba(0, 0, 0, 0.473);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none;
+}
+
+.show-modal {
+    opacity: 1;
+    pointer-events: initial;
+}
+
+.modal__container {
+    background: darkslateblue;
+    border-radius: 10%;
+}
+
+.modal__header {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    padding: 2rem 2rem 1rem;
+}
+
+.modal__heading {
+    font-size: 1.5rem;
+    color: burlywood;
+}
+
+.closeBtn {
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.modal__img {
+    padding: 2rem 4rem;
+
+}
+
+.preload *{
+    transition: none;
+}

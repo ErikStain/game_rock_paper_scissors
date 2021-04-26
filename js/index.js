@@ -31,33 +31,80 @@ function toChoose (value) {
     const compChoose = randomChoose()
     console.log("Выбор компьютера",compChoose);
     console.log("Выбор пользователя",value);
+    showResults([value, compChoose])
+    showWinner([value, compChoose])
 }
 
-function showResults () {
+function showResults (results) {
     console.log(refs.resultsDivs);
     refs.resultsDivs.forEach((div,index)=>{
-        console.log(div);
-        console.log(index);
+       setTimeout(()=>{
         const item = document.createElement("div")
-        console.log(item);
         item.classList.add("choice")
+        // console.log(results[index]);
+        item.classList.add(`${results[index].name}`)
         const img = document.createElement("img")
+        img.src = `./images/icon-${results[index].name}.svg`
+        img.alt = "icon"
         console.log(img);
         item.appendChild(img)
+        div.appendChild(item)
+       },index*1000)
     })
+    refs.sectionGame.classList.toggle("hidden")
+    refs.resultDiv.classList.toggle("hidden")
 }
 
-showResults()
+function showWinner (results) {
+    setTimeout(()=>{
+        const userWin = results[0].beats===results[1].name
+    const compWin = results[1].beats===results[0].name
+    if (userWin) {
+        refs.resultsText.innerText = "Вы победили"
+        refs.resultsDivs[0].classList.toggle("winner")
+        
+    } else if (compWin) {
+        refs.resultsText.textContent = "Вы проиграли"
+        refs.resultsDivs[1].classList.toggle("winner")
+    } else {
+        refs.resultsText.textContent = "Ни нам, ни вам"
+    }
+    refs.resultsWinner.classList.toggle("hidden")
+    refs.resultDiv.classList.toggle("show-winner")
+    },1000)
+}
 
 // Функция рандомного выбора компьютера
 
 function randomChoose () {
     let random = Math.random()*CHOICES.length
-    console.log(random);
+    // console.log(random);
     let floorRandom = Math.floor(random);
-    console.log(floorRandom);
-    console.log(CHOICES[floorRandom]);
+    // console.log(floorRandom);
+    // console.log(CHOICES[floorRandom]);
     return CHOICES[floorRandom]
 }
 
-toChoose()
+refs.playAgainButton.addEventListener("click",()=>{
+    refs.sectionGame.classList.toggle("hidden")
+    refs.resultDiv.classList.toggle("hidden")
+    refs.resultsDivs.forEach((diw)=>{
+        diw.innerHTML = ""
+        diw.classList.remove("winner")
+    })
+    refs.resultsText.innerText = ""
+    refs.resultsWinner.toggle("hidden")
+    refs.resultDiv.toggle("show-winner")
+})
+
+refs.rulesBtn.addEventListener("click",()=>{
+    refs.modal.classList.toggle("show-modal")
+})
+
+refs.closeBtn.addEventListener("click",()=>{
+    refs.modal.classList.toggle("show-modal")
+})
+
+setTimeout(()=>{
+    document.body.classList.remove("preload")
+},1000)
