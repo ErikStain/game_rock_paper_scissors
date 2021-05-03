@@ -237,7 +237,7 @@ body {
 
 .results.show-winner {
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 'you-title . ai-title' 'you-picked result-winner ai-picked';
+  grid-template-areas: 'you-title . ai-title' 'you-picked result-winner ai-picked';
 }
 
 .results__winner {

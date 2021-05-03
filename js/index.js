@@ -100,8 +100,8 @@ refs.playAgainButton.addEventListener('click', () => {
     diw.classList.remove('winner')
   })
   refs.resultsText.innerText = ''
-  refs.resultsWinner.toggle('hidden')
-  refs.resultDiv.toggle('show-winner')
+  refs.resultsWinner.classList.toggle('hidden')
+  refs.resultDiv.classList.toggle('show-winner')
 })
 
 refs.rulesBtn.addEventListener('click', () => {
